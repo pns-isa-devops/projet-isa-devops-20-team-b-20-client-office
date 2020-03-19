@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 public class Shell
 {
 
-
     private List<Command> commands;
 
     private DroneDeliveryAPI droneDeliveryAPI;
