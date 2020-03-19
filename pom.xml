@@ -138,7 +138,7 @@
               <sourceRoot>${basedir}/src/main/java/</sourceRoot>
               <wsdlOptions>
                 <wsdlOption>
-                  <wsdl>${basedir}/src/main/resources/DeliveryWS.wsdl</wsdl>
+                  <wsdl>${basedir}/src/main/resources/DeliveryServiceImpl.wsdl</wsdl>
                   <extraargs>
                     <extraarg>-p</extraarg>
                     <extraarg>stubs.delivery</extraarg>
