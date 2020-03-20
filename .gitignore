@@ -17,7 +17,9 @@ conception/diagrams/*
 sonarCommand.txt
 logs/*
 **/target/*
-
+.settings
+.classpath
+.project
 # Avoid ignoring Maven wrapper api file (.api files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
 **/stubs
