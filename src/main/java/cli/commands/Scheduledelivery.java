@@ -13,7 +13,7 @@ public class Scheduledelivery extends Command {
         }
         System.out.println(String.format("Scheduling delivery : %s for %s", args.get(1), args.get(0)));
         try {
-            this.shell.getDroneDeliveryAPI().deliveries.scheduleDelivery(args.get(0), args.get(1));
+            ((DroneDeliveryAPI)this.shell.getDroneDeliveryAPI()).deliveries.scheduleDelivery(args.get(0), args.get(1));
         } catch (Exception_Exception e) {
             e.printStackTrace();
         }

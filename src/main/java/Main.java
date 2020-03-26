@@ -13,6 +13,8 @@ public class Main {
         Shell s = new Shell(new DroneDeliveryAPI(host, port));
         s.register(
                 Scheduledelivery.class
+                Bye.class
+                Help.class
         );
         s.run();
     }

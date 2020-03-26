@@ -6,7 +6,7 @@ import stubs.delivery.DeliveryServiceImplService;
 import javax.xml.ws.BindingProvider;
 import java.net.URL;
 
-public class DroneDeliveryAPI {
+public class DroneDeliveryAPI implements API {
     public DeliveryService deliveries;
 
     public DroneDeliveryAPI(String host, String port) {
