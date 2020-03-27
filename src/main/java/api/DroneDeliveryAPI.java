@@ -14,10 +14,10 @@ public class DroneDeliveryAPI implements API {
     }
 
     public void initDeliveries(String host, String port) {
-        URL wsdlLocation = DroneDeliveryAPI.class.getResource("/DeliveryWS.wsdl");
+        URL wsdlLocation = DroneDeliveryAPI.class.getResource("/DeliveryScheduleWS.wsdl");
         DeliveryScheduleServiceImplService factory = new DeliveryScheduleServiceImplService(wsdlLocation);
         this.deliveries = factory.getDeliveryScheduleServiceImplPort();
-        String address = "http://" + host + ":" + port + "/drone-delivery-backend/webservices/DeliveryWS?wsdl";
+        String address = "http://" + host + ":" + port + "/drone-delivery-backend/webservices/DeliveryScheduleWS?wsdl";
         ((BindingProvider) deliveries).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
     }
 }
