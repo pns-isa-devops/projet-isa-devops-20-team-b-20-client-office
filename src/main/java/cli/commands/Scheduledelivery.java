@@ -15,11 +15,12 @@ public class Scheduledelivery extends Command {
         }
         System.out.println(String.format("Scheduling delivery : %s for %s", args.get(1), args.get(0)));
         try {
-            ((DroneDeliveryAPI) this.shell.getDroneDeliveryAPI()).deliveries.scheduleDelivery(args.get(0), args.get(1));
+            boolean status = ((DroneDeliveryAPI) this.shell.getDroneDeliveryAPI()).deliveries.scheduleDelivery(args.get(0), args.get(1));
+            if (status)  System.out.println("Delivery scheduled");
+            else System.out.println("Time slot not available");
         } catch (Exception_Exception e) {
             e.printStackTrace();
         }
-        System.out.println("Delivery scheduled");
     }
 
     @Override

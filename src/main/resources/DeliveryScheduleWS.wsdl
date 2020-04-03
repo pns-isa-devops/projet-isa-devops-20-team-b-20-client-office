@@ -11,7 +11,9 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="scheduleDeliveryResponse">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element name="status" type="xs:boolean"/>
+    </xs:sequence>
   </xs:complexType>
   <xs:element name="Exception" type="tns:Exception"/>
   <xs:complexType name="Exception">
