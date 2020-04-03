@@ -32,7 +32,7 @@ pipeline{
         stage("Compile") {
             steps {
                 configFileProvider([configFile(fileId: MVN_SETTING_PROVIDER, variable: "MAVEN_SETTINGS")]) {
-					dir('./projet-isa-devops-20-team-b-20-client-offices') {
+					dir('./projet-isa-devops-20-team-b-20-client-office') {
 						echo "Compile module"
 						sh "mvn -s $MAVEN_SETTINGS clean compile"
 					}
