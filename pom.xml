@@ -17,7 +17,7 @@
   <dependencies>
     <dependency>
       <groupId>fr.unice.polytech.isadevops.client</groupId>
-      <artifactId>client-utils</artifactId>
+      <artifactId>projet-isa-devops-20-team-b-20-client-utils</artifactId>
       <version>1.0</version>
     </dependency>
   </dependencies>
