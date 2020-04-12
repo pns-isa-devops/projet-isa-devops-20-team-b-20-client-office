@@ -1,11 +1,11 @@
 package cli.commands;
 
-import api.DroneDeliveryAPI;
+import api.DeliveryScheduleAPI;
 import stubs.delivery.Exception_Exception;
 
 import java.util.List;
 
-public class Scheduledelivery extends Command {
+public class ScheduleDelivery extends Command {
     @Override
     public void execute(List<String> args) {
         if (args.size() < 2) {
@@ -15,8 +15,8 @@ public class Scheduledelivery extends Command {
         }
         System.out.println(String.format("Scheduling delivery : %s for %s", args.get(1), args.get(0)));
         try {
-            boolean status = ((DroneDeliveryAPI) this.shell.getDroneDeliveryAPI()).deliveries.scheduleDelivery(args.get(0), args.get(1));
-            if (status)  System.out.println("Delivery scheduled");
+            boolean status = ((DeliveryScheduleAPI) this.shell.getServiceAPI()).deliveryScheduleService.scheduleDelivery(args.get(0), args.get(1));
+            if (status) System.out.println("Delivery scheduled");
             else System.out.println("Time slot not available");
         } catch (Exception_Exception e) {
             e.printStackTrace();

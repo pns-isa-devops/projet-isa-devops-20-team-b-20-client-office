@@ -1,5 +1,5 @@
-import api.DroneDeliveryAPI;
-import cli.commands.Scheduledelivery;
+import api.DeliveryScheduleAPI;
+import cli.commands.ScheduleDelivery;
 import cli.framework.Shell;
 
 import cli.commands.Bye;
@@ -12,8 +12,8 @@ public class Main {
         System.out.println("Starting Drone Delivery OFFICE");
         System.out.println("  - Remote server: " + host);
         System.out.println("  - Port number:   " + port);
-        Shell s = new Shell(new DroneDeliveryAPI(host, port));
-        s.register(Scheduledelivery.class, Bye.class, Help.class);
+        Shell s = new Shell(new DeliveryScheduleAPI(host, port));
+        s.register(ScheduleDelivery.class, Bye.class, Help.class);
         s.run();
     }
 
