@@ -23,6 +23,7 @@
   </dependencies>
 
   <build>
+    <finalName>client-office</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.cxf</groupId>
