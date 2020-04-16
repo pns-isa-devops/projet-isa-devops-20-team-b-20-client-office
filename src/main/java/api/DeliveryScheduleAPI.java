@@ -1,5 +1,6 @@
 package api;
 
+import cli.framework.APIName;
 import stubs.delivery.DeliveryScheduleService;
 import stubs.delivery.DeliveryScheduleServiceImplService;
 
@@ -25,5 +26,10 @@ public class DeliveryScheduleAPI extends ServiceAPI {
         this.deliveryScheduleService = factory.getDeliveryScheduleServiceImplPort();
         String address = "http://" + host + ":" + port + "/drone-delivery-backend/webservices/DeliveryScheduleWS?wsdl";
         ((BindingProvider) deliveryScheduleService).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
+    }
+
+    @Override
+    public APIName getAPIName() {
+        return APIName.DELIVERY_SCHEDULE;
     }
 }
