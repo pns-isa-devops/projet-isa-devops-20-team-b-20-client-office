@@ -8,10 +8,14 @@ import java.net.URL;
 
 public class DeliveryScheduleAPI extends ServiceAPI {
 
-    public DeliveryScheduleService deliveryScheduleService; //todo, this should not be public
+    private DeliveryScheduleService deliveryScheduleService;
 
     public DeliveryScheduleAPI(String host, String port) {
         super(host, port);
+    }
+
+    public DeliveryScheduleService getDeliveryScheduleService(){
+        return this.deliveryScheduleService;
     }
 
     @Override
