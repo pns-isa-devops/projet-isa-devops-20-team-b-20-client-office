@@ -1,13 +1,14 @@
-package framework;
+package client.office.framework;
 
-import api.DeliveryScheduleAPI;
-import cli.framework.Shell;
+import client.office.api.DeliveryScheduleAPI;
+import client.utils.cli.framework.Shell;
 
 public class ShellOffice extends Shell {
-    
+
     private DeliveryScheduleAPI deliveryScheduleAPI;
 
     public ShellOffice(DeliveryScheduleAPI deliveryScheduleAPI) {
+        super("client.office.cli.commands");
         this.deliveryScheduleAPI = deliveryScheduleAPI;
     }
 

@@ -1,11 +1,12 @@
-package cli.commands;
-
-import framework.ShellOffice;
-import stubs.delivery.Exception_Exception;
+package client.office.cli.commands;
 
 import java.util.List;
 
-public class ScheduleDelivery extends Command {
+import client.office.framework.ShellOffice;
+import client.utils.cli.commands.Command;
+import stubs.delivery.Exception_Exception;
+
+public class Scheduledelivery extends Command {
     @Override
     public void execute(List<String> args) {
         if (args.size() < 2) {
@@ -15,7 +16,8 @@ public class ScheduleDelivery extends Command {
         }
         System.out.println(String.format("Scheduling delivery : %s for %s", args.get(1), args.get(0)));
         try {
-            ((ShellOffice) this.shell).getDeliveryServiceAPI().getDeliveryScheduleService().scheduleDelivery(args.get(0), args.get(1));
+            ((ShellOffice) this.shell).getDeliveryServiceAPI().getDeliveryScheduleService()
+                    .scheduleDelivery(args.get(0), args.get(1));
             System.out.println("Delivery scheduled!");
         } catch (Exception_Exception e) {
             e.printStackTrace();
@@ -23,7 +25,7 @@ public class ScheduleDelivery extends Command {
     }
 
     @Override
-    String help() {
+    protected String help() {
         return "scheduledelivery <HH:mm> <deliveryID> : Schedules the specified delivery at the specified hour.";
     }
 }

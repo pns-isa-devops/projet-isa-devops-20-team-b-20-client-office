@@ -1,10 +1,12 @@
-package api;
+package client.office.api;
 
-import stubs.delivery.DeliveryScheduleService;
-import stubs.delivery.DeliveryScheduleServiceImplService;
+import java.net.URL;
 
 import javax.xml.ws.BindingProvider;
-import java.net.URL;
+
+import client.utils.api.ServiceAPI;
+import stubs.delivery.DeliveryScheduleService;
+import stubs.delivery.DeliveryScheduleServiceImplService;
 
 public class DeliveryScheduleAPI extends ServiceAPI {
 
@@ -14,7 +16,7 @@ public class DeliveryScheduleAPI extends ServiceAPI {
         super(host, port);
     }
 
-    public DeliveryScheduleService getDeliveryScheduleService(){
+    public DeliveryScheduleService getDeliveryScheduleService() {
         return this.deliveryScheduleService;
     }
 
@@ -24,6 +26,7 @@ public class DeliveryScheduleAPI extends ServiceAPI {
         DeliveryScheduleServiceImplService factory = new DeliveryScheduleServiceImplService(wsdlLocation);
         this.deliveryScheduleService = factory.getDeliveryScheduleServiceImplPort();
         String address = "http://" + host + ":" + port + "/drone-delivery-backend/webservices/DeliveryScheduleWS?wsdl";
-        ((BindingProvider) deliveryScheduleService).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
+        ((BindingProvider) deliveryScheduleService).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
+                address);
     }
 }

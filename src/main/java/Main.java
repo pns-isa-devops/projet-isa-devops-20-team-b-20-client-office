@@ -1,9 +1,10 @@
-import api.DeliveryScheduleAPI;
-import cli.commands.ScheduleDelivery;
-import cli.framework.Shell;
-import framework.ShellOffice;
-import cli.commands.Bye;
-import cli.commands.Help;
+
+import client.office.api.DeliveryScheduleAPI;
+import client.office.cli.commands.Scheduledelivery;
+import client.office.framework.ShellOffice;
+import client.utils.cli.commands.Bye;
+import client.utils.cli.commands.Help;
+import client.utils.cli.framework.Shell;
 
 public class Main {
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
@@ -13,7 +14,7 @@ public class Main {
         System.out.println("  - Remote server: " + host);
         System.out.println("  - Port number:   " + port);
         Shell s = new ShellOffice(new DeliveryScheduleAPI(host, port));
-        s.register(ScheduleDelivery.class, Bye.class, Help.class);
+        s.register(Scheduledelivery.class, Bye.class, Help.class);
         s.run();
     }
 
