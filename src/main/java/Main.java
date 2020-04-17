@@ -1,7 +1,7 @@
 import api.DeliveryScheduleAPI;
 import cli.commands.ScheduleDelivery;
 import cli.framework.Shell;
-
+import framework.ShellOffice;
 import cli.commands.Bye;
 import cli.commands.Help;
 
@@ -12,7 +12,7 @@ public class Main {
         System.out.println("Starting Drone Delivery OFFICE");
         System.out.println("  - Remote server: " + host);
         System.out.println("  - Port number:   " + port);
-        Shell s = new Shell(new DeliveryScheduleAPI(host, port));
+        Shell s = new ShellOffice(new DeliveryScheduleAPI(host, port));
         s.register(ScheduleDelivery.class, Bye.class, Help.class);
         s.run();
     }

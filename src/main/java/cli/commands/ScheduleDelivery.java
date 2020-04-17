@@ -1,7 +1,6 @@
 package cli.commands;
 
-import api.DeliveryScheduleAPI;
-import cli.framework.APIName;
+import framework.ShellOffice;
 import stubs.delivery.Exception_Exception;
 
 import java.util.List;
@@ -16,7 +15,7 @@ public class ScheduleDelivery extends Command {
         }
         System.out.println(String.format("Scheduling delivery : %s for %s", args.get(1), args.get(0)));
         try {
-            ((DeliveryScheduleAPI) this.shell.getServiceAPI(APIName.DELIVERY_SCHEDULE)).getDeliveryScheduleService().scheduleDelivery(args.get(0), args.get(1));
+            ((ShellOffice) this.shell).getDeliveryServiceAPI().getDeliveryScheduleService().scheduleDelivery(args.get(0), args.get(1));
             System.out.println("Delivery scheduled!");
         } catch (Exception_Exception e) {
             e.printStackTrace();
