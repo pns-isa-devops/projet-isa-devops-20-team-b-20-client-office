@@ -16,6 +16,14 @@ pipeline{
                 }
             }
         }
+        stage("Deploy") {
+            steps {
+                configFileProvider([configFile(fileId: MVN_SETTING_PROVIDER, variable: "MAVEN_SETTINGS")]) {
+                    echo "Deploy module"
+                    sh "mvn -s $MAVEN_SETTINGS -N deploy"
+                }
+            }
+        }
     }
     post{
         success {
