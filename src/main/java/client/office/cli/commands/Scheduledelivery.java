@@ -20,7 +20,7 @@ public class Scheduledelivery extends Command {
                     .scheduleDelivery(args.get(0), args.get(1));
             System.out.println("Delivery scheduled!");
         } catch (Exception_Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
