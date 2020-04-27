@@ -43,6 +43,13 @@
                     <extraarg>stubs.delivery</extraarg>
                   </extraargs>
                 </wsdlOption>
+                <wsdlOption>
+                  <wsdl>${basedir}/src/main/resources/InvoiceWS.wsdl</wsdl>
+                  <extraargs>
+                      <extraarg>-p</extraarg>
+                      <extraarg>stubs.invoice</extraarg>
+                  </extraargs>
+              </wsdlOption>
               </wsdlOptions>
             </configuration>
             <goals>
