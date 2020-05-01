@@ -14,8 +14,8 @@ public class Scheduledelivery extends Command {
             System.err.println("scheduledelivery <HH:mm> <deliveryID>");
             return;
         }
-        System.out.println(String.format("Scheduling delivery : %s for %s", args.get(1), args.get(0)));
         try {
+            System.out.println(String.format("Scheduling delivery : %s for %s", args.get(1), args.get(0)));
             ((ShellOffice) this.shell).getDeliveryServiceAPI().getDeliveryScheduleService()
                     .scheduleDelivery(args.get(0), args.get(1));
             System.out.println("Delivery scheduled!");
