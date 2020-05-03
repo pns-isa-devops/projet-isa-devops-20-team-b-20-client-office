@@ -16,7 +16,7 @@ public class Occupancy extends Command {
         }
         try {
            System.out.println( ((ShellOffice) this.shell).getAnalyticsAPI().getAnalyticsService()
-                    .getOccupancyRate(args.get(0)));
+                    .getOccupancyRate(args.get(0))*100 +"%");
 
         } catch (Exception_Exception e) {
             System.out.println(e.getMessage());
