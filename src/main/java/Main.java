@@ -1,6 +1,7 @@
 
 import client.office.api.AnalyticsAPI;
 import client.office.api.DeliveryScheduleAPI;
+import client.office.api.InvoiceAPI;
 import client.office.cli.commands.Scheduledelivery;
 import client.office.framework.ShellOffice;
 import client.utils.cli.commands.Bye;
@@ -14,7 +15,7 @@ public class Main {
         System.out.println("Starting Drone Delivery OFFICE");
         System.out.println("  - Remote server: " + host);
         System.out.println("  - Port number:   " + port);
-        Shell s = new ShellOffice(new DeliveryScheduleAPI(host, port), new AnalyticsAPI(host,port));
+        Shell s = new ShellOffice(new DeliveryScheduleAPI(host, port),new AnalyticsAPI(host,port), new InvoiceAPI(host, port));
         s.register(Scheduledelivery.class, Bye.class, Help.class);
         s.run();
     }
