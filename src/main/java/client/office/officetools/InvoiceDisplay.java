@@ -29,6 +29,8 @@ public class InvoiceDisplay {
         for(Delivery delivery : invoice.getDeliveries())
         {
             msg.append(delivery.getDeliveryId());
+            msg.append(" - ");
+            msg.append(delivery.getStatus().toString());
             msg.append("\n");
         }
 
