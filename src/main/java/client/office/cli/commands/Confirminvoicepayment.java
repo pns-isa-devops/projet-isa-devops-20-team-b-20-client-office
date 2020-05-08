@@ -1,13 +1,11 @@
 package client.office.cli.commands;
 
+import java.util.List;
+
 import client.office.framework.ShellOffice;
 import client.office.officetools.InvoiceDisplay;
 import client.utils.cli.commands.Command;
 import stubs.invoice.Invoice;
-import stubs.invoice.InvoiceNotFoundException;
-import stubs.invoice.InvoiceNotFoundException_Exception;
-
-import java.util.List;
 
 public class Confirminvoicepayment extends Command {
     @Override
@@ -19,8 +17,7 @@ public class Confirminvoicepayment extends Command {
             return;
         }
         try {
-            invoice = ((ShellOffice) this.shell).getInvoiceAPI().getInvoiceService()
-                    .confirmInvoicePayment(args.get(0));
+            invoice = ((ShellOffice) this.shell).getInvoiceAPI().getInvoiceService().confirmInvoicePayment(args.get(0));
             System.out.println(InvoiceDisplay.invoiceToString(invoice));
         } catch (Exception e) {
             System.out.println(e.getMessage());

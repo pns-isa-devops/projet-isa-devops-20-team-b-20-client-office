@@ -20,8 +20,7 @@ public class Getplanning extends Command {
         try {
             List<TimeState> states = ((ShellOffice) this.shell).getDeliveryServiceAPI().getDeliveryScheduleService()
                     .getCurrentPlanning(args.get(0));
-            for(int i=0; i<states.size(); i++)
-            {
+            for (int i = 0; i < states.size(); i++) {
                 System.out.printf("[%d:%d] %s |", getHour(i), getMinute(i), states.get(i).toString());
             }
         } catch (Exception e) {
@@ -30,11 +29,11 @@ public class Getplanning extends Command {
     }
 
     private int getMinute(int i) {
-        return i%4 * 15;
+        return i % 4 * 15;
     }
 
     private int getHour(int i) {
-        return i/4 + STARTING_HOUR;
+        return i / 4 + STARTING_HOUR;
     }
 
     @Override
@@ -42,5 +41,5 @@ public class Getplanning extends Command {
         // TODO Auto-generated method stub
         return null;
     }
-    
+
 }
