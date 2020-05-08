@@ -29,7 +29,7 @@
       <xs:enumeration value="DELIVERY"/>
       <xs:enumeration value="CHARGING"/>
       <xs:enumeration value="REVIEW"/>
-      <xs:enumeration value="UNAVAILABLE"/>
+      <xs:enumeration value="RESERVED_FOR_CHARGE"/>
       <xs:enumeration value="AVAILABLE"/>
     </xs:restriction>
   </xs:simpleType>
@@ -39,8 +39,20 @@
       <xs:element minOccurs="0" name="message" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="TimeslotUnvailableException" type="tns:TimeslotUnvailableException"/>
-  <xs:complexType name="TimeslotUnvailableException">
+  <xs:element name="ZeroDronesInWarehouseException" type="tns:ZeroDronesInWarehouseException"/>
+  <xs:complexType name="ZeroDronesInWarehouseException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NoFreeDroneAtThisTimeSlotException" type="tns:NoFreeDroneAtThisTimeSlotException"/>
+  <xs:complexType name="NoFreeDroneAtThisTimeSlotException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OutOfWorkingHourTimeSlotException" type="tns:OutOfWorkingHourTimeSlotException"/>
+  <xs:complexType name="OutOfWorkingHourTimeSlotException">
     <xs:sequence>
       <xs:element minOccurs="0" name="message" type="xs:string"/>
     </xs:sequence>
@@ -60,6 +72,10 @@
     <wsdl:part element="tns:getCurrentPlanning" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="ZeroDronesInWarehouseException">
+    <wsdl:part element="tns:ZeroDronesInWarehouseException" name="ZeroDronesInWarehouseException">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="scheduleDelivery">
     <wsdl:part element="tns:scheduleDelivery" name="parameters">
     </wsdl:part>
@@ -68,12 +84,16 @@
     <wsdl:part element="tns:DroneNotFoundException" name="DroneNotFoundException">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="TimeslotUnvailableException">
-    <wsdl:part element="tns:TimeslotUnvailableException" name="TimeslotUnvailableException">
+  <wsdl:message name="NoFreeDroneAtThisTimeSlotException">
+    <wsdl:part element="tns:NoFreeDroneAtThisTimeSlotException" name="NoFreeDroneAtThisTimeSlotException">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="UnknownDeliveryException">
     <wsdl:part element="ns1:UnknownDeliveryException" name="UnknownDeliveryException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OutOfWorkingHourTimeSlotException">
+    <wsdl:part element="tns:OutOfWorkingHourTimeSlotException" name="OutOfWorkingHourTimeSlotException">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getCurrentPlanningResponse">
@@ -92,17 +112,23 @@
     </wsdl:output>
       <wsdl:fault message="tns:DroneNotFoundException" name="DroneNotFoundException">
     </wsdl:fault>
+      <wsdl:fault message="tns:ZeroDronesInWarehouseException" name="ZeroDronesInWarehouseException">
+    </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="scheduleDelivery">
       <wsdl:input message="tns:scheduleDelivery" name="scheduleDelivery">
     </wsdl:input>
       <wsdl:output message="tns:scheduleDeliveryResponse" name="scheduleDeliveryResponse">
     </wsdl:output>
+      <wsdl:fault message="tns:NoFreeDroneAtThisTimeSlotException" name="NoFreeDroneAtThisTimeSlotException">
+    </wsdl:fault>
       <wsdl:fault message="tns:UnknownDeliveryException" name="UnknownDeliveryException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OutOfWorkingHourTimeSlotException" name="OutOfWorkingHourTimeSlotException">
     </wsdl:fault>
       <wsdl:fault message="tns:DroneNotFoundException" name="DroneNotFoundException">
     </wsdl:fault>
-      <wsdl:fault message="tns:TimeslotUnvailableException" name="TimeslotUnvailableException">
+      <wsdl:fault message="tns:ZeroDronesInWarehouseException" name="ZeroDronesInWarehouseException">
     </wsdl:fault>
     </wsdl:operation>
   </wsdl:portType>
@@ -119,6 +145,9 @@
       <wsdl:fault name="DroneNotFoundException">
         <soap:fault name="DroneNotFoundException" use="literal"/>
       </wsdl:fault>
+      <wsdl:fault name="ZeroDronesInWarehouseException">
+        <soap:fault name="ZeroDronesInWarehouseException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="scheduleDelivery">
       <soap:operation soapAction="" style="document"/>
@@ -128,14 +157,20 @@
       <wsdl:output name="scheduleDeliveryResponse">
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="NoFreeDroneAtThisTimeSlotException">
+        <soap:fault name="NoFreeDroneAtThisTimeSlotException" use="literal"/>
+      </wsdl:fault>
       <wsdl:fault name="UnknownDeliveryException">
         <soap:fault name="UnknownDeliveryException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OutOfWorkingHourTimeSlotException">
+        <soap:fault name="OutOfWorkingHourTimeSlotException" use="literal"/>
       </wsdl:fault>
       <wsdl:fault name="DroneNotFoundException">
         <soap:fault name="DroneNotFoundException" use="literal"/>
       </wsdl:fault>
-      <wsdl:fault name="TimeslotUnvailableException">
-        <soap:fault name="TimeslotUnvailableException" use="literal"/>
+      <wsdl:fault name="ZeroDronesInWarehouseException">
+        <soap:fault name="ZeroDronesInWarehouseException" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
