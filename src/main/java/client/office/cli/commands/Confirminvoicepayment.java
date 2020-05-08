@@ -13,7 +13,7 @@ public class Confirminvoicepayment extends Command {
         Invoice invoice;
         if (args.size() != 1) {
             System.err.println("wrong number of arguments");
-            System.err.println("ConfirmInvoicePayment <invoiceID> ");
+            System.err.println("ConfirmInvoicePayment <invoiceID>");
             return;
         }
         try {
@@ -26,6 +26,6 @@ public class Confirminvoicepayment extends Command {
 
     @Override
     protected String help() {
-        return "confirmInvoicePayment <invoiceID>: tag an invoice as paid";
+        return "confirminvoicepayment <invoiceID> : tag an invoice as paid";
     }
 }

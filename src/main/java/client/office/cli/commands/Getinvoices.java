@@ -20,7 +20,7 @@ public class Getinvoices extends Command {
 
     @Override
     protected String help() {
-        return "getInvoice : Get invoices";
+        return "getinvoice : Get invoices";
     }
 
 }

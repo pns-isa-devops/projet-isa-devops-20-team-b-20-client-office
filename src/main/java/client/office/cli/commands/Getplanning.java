@@ -14,7 +14,7 @@ public class Getplanning extends Command {
     public void execute(List<String> args) {
         if (args.size() < 1) {
             System.err.println("Not enough arguments");
-            System.err.println("getplanning : <droneID>");
+            System.err.println("getplanning <droneID>");
             return;
         }
         try {
@@ -38,8 +38,7 @@ public class Getplanning extends Command {
 
     @Override
     protected String help() {
-        // TODO Auto-generated method stub
-        return null;
+        return "getplanning <droneID> : display the planning of a drone";
     }
 
 }
