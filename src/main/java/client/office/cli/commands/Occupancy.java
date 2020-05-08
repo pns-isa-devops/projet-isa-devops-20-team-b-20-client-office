@@ -2,6 +2,7 @@ package client.office.cli.commands;
 
 import client.office.framework.ShellOffice;
 import client.utils.cli.commands.Command;
+import stubs.analytics.NoOccupancyOnThatDroneException_Exception;
 
 import java.util.List;
 
@@ -13,8 +14,12 @@ public class Occupancy extends Command {
             System.err.println("occupancy <droneID>");
             return;
         }
-        System.out.println(
-                ((ShellOffice) this.shell).getAnalyticsAPI().getAnalyticsService().getOccupancyRate(args.get(0)));
+        try {
+            System.out.println(
+                    ((ShellOffice) this.shell).getAnalyticsAPI().getAnalyticsService().getOccupancyRate(args.get(0)));
+        } catch (NoOccupancyOnThatDroneException_Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
