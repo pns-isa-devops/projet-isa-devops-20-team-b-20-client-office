@@ -20,6 +20,20 @@ public class InvoiceDisplay {
         msg.append("Price TTC : ");
         msg.append(invoice.getPrice()*1.2);
         msg.append("\n");
+        msg.append("Date d'émission : ");
+        msg.append(invoice.getEmissionDate().toString());
+        msg.append("\n");
+
+        if(invoice.getPaymentDate() != null)
+        {
+            msg.append("Date de paiement : ");
+            msg.append(invoice.getPaymentDate().toString());
+            msg.append("\n");
+        }
+        else
+        {
+            msg.append("Non payé\n");
+        }
 
         msg.append("Number of deliveries : ");
         msg.append(invoice.getDeliveries().size());
