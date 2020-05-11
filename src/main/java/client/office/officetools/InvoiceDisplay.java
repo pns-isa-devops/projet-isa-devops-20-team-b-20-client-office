@@ -3,6 +3,8 @@ package client.office.officetools;
 import stubs.invoice.Delivery;
 import stubs.invoice.Invoice;
 
+import java.util.List;
+
 public class InvoiceDisplay {
 
     public static String invoiceToString(Invoice invoice)
@@ -10,8 +12,13 @@ public class InvoiceDisplay {
         StringBuilder msg = new StringBuilder();
         msg.append("[ Invoice N°");
         msg.append(invoice.getInvoiceId());
-        msg.append("\nCarrier : ");
-        msg.append(invoice.getDeliveries().get(0).getParcel().getCarrier());
+        List<Delivery> d = invoice.getDeliveries();
+        if(d != null){
+            if(!d.isEmpty()) {
+                msg.append("\nCarrier : ");
+                msg.append(d.get(0).getParcel().getCarrier());
+            }
+        }
         msg.append("\n");
         msg.append("Status : ");
         msg.append(invoice.getStatus());
